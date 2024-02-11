@@ -1,0 +1,16 @@
+[project]
+name = "unmoderndjango"
+version = "0.0.1"
+dependencies = [
+    "Django",
+    "whitenoise[brotli]"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pip-tools",
+    "ruff"
+]
+
+[tool.setuptools]
+py-modules = []

@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Unmodern Django | {% block title %} The Web Is a Platform {% endblock %}
+    </title>
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'missing.css/missing.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/main.css' %}">
+    {% endblock %}
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <header class="navbar" data-overflow-nav>
+    <nav class="contents" aria-label="Site sections">
+      <button class="iconbutton" data-nav-expander aria-hidden>
+        &#x2630; <!-- trigram for heaven -->
+      </button>
+      <ul role="list">
+        <li class="logo"><a href="/">&lt;Unmodern<span class="green">Django</span>/&gt;</a>
+        <li><a href="/docs">Patterns</a>
+        <li><a href="/docs">Libraries</a>
+        <li><a href="/docs">Blog</a>
+      </ul>
+    </nav>
+    <nav aria-label="Social media links">
+      <ul role="list">
+        <li><a href="https://github.com/...">GitHub</a>
+      </ul>
+    </nav>
+  </header>
+  <div class="col-4">
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+  </div>
+  {% block javascript %}
+  <script type="module" src="{% static 'missing.css/js/overflow-nav.js' %}"></script>
+  {% endblock %}
+  {% block extra_javascript %}{% endblock %}
+</body>
+</html>

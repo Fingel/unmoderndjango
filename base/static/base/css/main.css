@@ -1,0 +1,13 @@
+:root {
+  --link-fg: var(--green-4);
+}
+.green {
+  color: var(--green-9);
+}
+.c {
+  margin: auto;
+}
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
