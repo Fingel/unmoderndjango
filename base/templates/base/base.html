@@ -8,7 +8,8 @@
         Unmodern Django | {% block title %} The Web Is a Platform {% endblock %}
     </title>
     {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'missing.css/missing.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'missing.css/missing.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'missing.css/missing-prism.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'base/css/main.css' %}">
     {% endblock %}
     {% block extra_css %}{% endblock %}
@@ -40,6 +41,9 @@
   </div>
   {% block javascript %}
   <script type="module" src="{% static 'missing.css/js/overflow-nav.js' %}"></script>
+  <script src="{% static 'prismjs/components/prism-core.min.js' %}"></script>
+  <script src="{% static 'prismjs/plugins/autoloader/prism-autoloader.min.js' %}"></script>
+  <script type="module" src="{% static 'prism-remote/prism-remote.js' %}"></script>
   {% endblock %}
   {% block extra_javascript %}{% endblock %}
 </body>

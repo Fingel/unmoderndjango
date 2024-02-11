@@ -123,6 +123,8 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "_static"
 STATICFILES_DIRS = [
     ("missing.css", BASE_DIR / "node_modules" / "missing.css" / "dist"),
+    ("prismjs", BASE_DIR / "node_modules" / "prismjs"),
+    ("prism-remote", BASE_DIR / "node_modules" / "prism-remote"),
 ]
 STORAGES = {
     "default": {
