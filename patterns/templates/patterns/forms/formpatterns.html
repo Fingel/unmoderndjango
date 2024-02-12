@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% block content %}
-<h1>Forms</h1>
+<h1>Simple Forms</h1>
 <p>When people think web applications, they think forms. Luckily Django includes
     nice abstractions to help with building and validating HTML forms.
     With a small sprinkle of htmx it's possible to create standard Django forms
@@ -44,4 +44,5 @@
     However, if the form is invalid, we simply return the main form template again
     with the invalid form so that Django will mark it up with error states and messages.
 </p>
+<a href="{% url 'patterns:index' %}">More patterns</a>
 {% endblock %}

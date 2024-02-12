@@ -1,5 +1,8 @@
 :root {
   --link-fg: var(--green-4);
+  --line-length: 50em;
+}
+html {
 }
 .green {
   color: var(--green-9);
