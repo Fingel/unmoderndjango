@@ -1,11 +1,5 @@
 from django import forms
 from django.shortcuts import render
-from django.views.generic import TemplateView, View
-
-
-class IndexView(TemplateView):
-    template_name = "patterns/index.html"
-
 
 example_choices = [
     ("yes", "We are so back!"),
@@ -40,7 +34,6 @@ def fred_form_view(request):
     return render(request, "patterns/forms/fred_form.html", {"form": form})
 
 
-class FormPatterns(View):
-    async def get(self, request):
-        form = FredForm()
-        return render(request, "patterns/forms/formpatterns.html", {"form": form})
+def simple_form_view(request):
+    form = FredForm()
+    return render(request, "patterns/forms/simple_forms.html", {"form": form})

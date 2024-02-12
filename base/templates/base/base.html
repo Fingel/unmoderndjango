@@ -17,9 +17,11 @@
 <body>
   <header class="navbar" data-overflow-nav>
     <nav class="contents" aria-label="Site sections">
-      <button class="iconbutton" data-nav-expander aria-hidden>
-        &#x2630; <!-- trigram for heaven -->
-      </button>
+      <div id="buttonwrapper">
+        <button class="iconbutton" data-nav-expander aria-hidden hidden type="button">
+          &#x2630; <!-- trigram for heaven -->
+        </button>
+      </div>
       <ul role="list">
         <li class="logo"><a href="/">&lt;Unmodern<span class="green">Django</span>/&gt;</a>
         <li><a href="{% url 'patterns:index' %}">Patterns</a>

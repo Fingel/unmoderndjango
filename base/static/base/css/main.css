@@ -2,8 +2,6 @@
   --link-fg: var(--green-4);
   --line-length: 50em;
 }
-html {
-}
 .green {
   color: var(--green-9);
 }
@@ -13,6 +11,10 @@ html {
 .logo {
   font-size: 1.5em;
   font-weight: bold;
+}
+
+#buttonwrapper {
+  margin-left: 0;
 }
 
 /*forms*/
