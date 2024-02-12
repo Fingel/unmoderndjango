@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h1>Patterns</h1>
+<h2><a href="{% url 'patterns:form-patterns' %}">Forms</a>
+</h2>
+<chip>htmx</chip>
+<p>Use htmx in combination with Django's abstractions to build forms
+    that are interactive without any page reloads.
+</p>
+
+{% endblock %}

@@ -11,3 +11,14 @@
   font-size: 1.5em;
   font-weight: bold;
 }
+
+/*forms*/
+
+input[aria-invalid="true"] {
+  border-color: var(--red-5);
+}
+
+.errorlist {
+  list-style: none;
+  color: var(--red-5);
+}

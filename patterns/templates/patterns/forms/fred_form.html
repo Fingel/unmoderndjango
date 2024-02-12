@@ -1,0 +1,5 @@
+<form hx-post="{% url 'patterns:fred-form' %}" hx-swap="outerHTML">
+    {% csrf_token %}
+    <p>{{ form }}</p>
+    <input type="submit" value="Submit">
+</form>

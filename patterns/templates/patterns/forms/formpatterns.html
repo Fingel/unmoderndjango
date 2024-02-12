@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h1>Forms</h1>
+<p>When people think web applications, they think forms. Luckily Django includes
+    nice abstractions to help with building and validating HTML forms.
+    With a small sprinkle of htmx it's possible to create standard Django forms
+    that do not require reloading the page or converting input to JSON.
+</p>
+<p>Try submitting the following form. See what happens when entering "Fred"
+    in the name field.
+</p>
+{% include 'patterns/forms/fred_form.html' with form=form %}
+<p>The FredForm itself is defined using
+    <a href="https://docs.djangoproject.com/en/5.0/topics/forms/">Django's form class</a>.
+    Notice the validation on the "name" field.
+</p>
+<prism-remote
+    src="https://github.com/Fingel/unmoderndjango/blob/main/patterns/views.py"
+    lang="python"
+    start=17
+    end=25>
+</prism-remote>
+<p>To include this form on a page (such as this one) a template is defined to display it:</p>
+<prism-remote
+    src="https://github.com/Fingel/unmoderndjango/blob/main/patterns/templates/patterns/forms/fred_form.html"
+    lang="markup"
+></prism-remote>
+<p>So far, this looks very similar to a normal Django workflow except for the
+    <code>hx-post</code> and <code>hx-swap</code> attributes. The
+    <code>hx-swap="outerHTML"</code> attribute will tell htmx to swap out the entire form
+    for the response from the <code>patterns:fred-form</code> url when it is submitted. That url points to this view:
+</p>
+<prism-remote
+    src="https://github.com/Fingel/unmoderndjango/blob/main/patterns/views.py"
+    lang="python"
+    start=28
+    end=40>
+</prism-remote>
+<p>
+    This is a very typical Django view for handling forms. If the request is a POST,
+    the <code>FredForm</code> is instantiated using the request body. If it's valid,
+    we return another template,
+    <a href="https://github.com/Fingel/unmoderndjango/blob/main/patterns/templates/patterns/forms/fred_form_submitted.html">fred_form_submitted.html</a>.
+    However, if the form is invalid, we simply return the main form template again
+    with the invalid form so that Django will mark it up with error states and messages.
+</p>
+{% endblock %}

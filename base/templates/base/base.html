@@ -22,7 +22,7 @@
       </button>
       <ul role="list">
         <li class="logo"><a href="/">&lt;Unmodern<span class="green">Django</span>/&gt;</a>
-        <li><a href="/docs">Patterns</a>
+        <li><a href="{% url 'patterns:index' %}">Patterns</a>
         <li><a href="/docs">Libraries</a>
         <li><a href="/docs">Blog</a>
       </ul>
@@ -44,6 +44,7 @@
   <script src="{% static 'prismjs/components/prism-core.min.js' %}"></script>
   <script src="{% static 'prismjs/plugins/autoloader/prism-autoloader.min.js' %}"></script>
   <script type="module" src="{% static 'prism-remote/prism-remote.js' %}"></script>
+  <script src="{% static 'htmx/htmx.js' %}"></script>
   {% endblock %}
   {% block extra_javascript %}{% endblock %}
 </body>

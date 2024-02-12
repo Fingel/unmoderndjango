@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "base",
+    "patterns",
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,7 @@ STATICFILES_DIRS = [
     ("missing.css", BASE_DIR / "node_modules" / "missing.css" / "dist"),
     ("prismjs", BASE_DIR / "node_modules" / "prismjs"),
     ("prism-remote", BASE_DIR / "node_modules" / "prism-remote"),
+    ("htmx", BASE_DIR / "node_modules" / "htmx.org" / "dist"),
 ]
 STORAGES = {
     "default": {
