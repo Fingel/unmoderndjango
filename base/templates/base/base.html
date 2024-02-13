@@ -35,12 +35,10 @@
       </ul>
     </nav>
   </header>
-  <div class="col-4">
     <main>
         {% block content %}
         {% endblock %}
     </main>
-  </div>
   {% block javascript %}
   <script type="module" src="{% static 'missing.css/js/overflow-nav.js' %}"></script>
   <script src="{% static 'prismjs/components/prism-core.min.js' %}"></script>
