@@ -8,7 +8,7 @@ example_choices = [
 ]
 
 
-class FredForm(forms.Form):
+class SimpleForm(forms.Form):
     name = forms.CharField(max_length=100)
     are_we_back = forms.ChoiceField(label="Are we back?", choices=example_choices)
 
@@ -19,21 +19,21 @@ class FredForm(forms.Form):
         return name
 
 
-def fred_form_view(request):
+def form_view(request):
     if request.method == "POST":
-        form = FredForm(request.POST)
+        form = SimpleForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data["name"]
-            form = FredForm()
+            form = SimpleForm()
             return render(
-                request, "patterns/forms/fred_form_submitted.html", {"name": name}
+                request, "patterns/simple_forms/form_submitted.html", {"name": name}
             )
     else:
-        form = FredForm()
+        form = SimpleForm()
 
-    return render(request, "patterns/forms/fred_form.html", {"form": form})
+    return render(request, "patterns/simple_forms/form.html", {"form": form})
 
 
-def simple_form_view(request):
-    form = FredForm()
-    return render(request, "patterns/forms/simple_forms.html", {"form": form})
+def index_view(request):
+    form = SimpleForm()
+    return render(request, "patterns/simple_forms/index.html", {"form": form})

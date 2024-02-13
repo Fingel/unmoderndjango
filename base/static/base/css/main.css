@@ -24,7 +24,6 @@ input[aria-invalid="true"] {
 }
 
 .errorlist {
-  padding-left: 0 !important;
   margin: 0;
   list-style: none;
   color: var(--red-5);
