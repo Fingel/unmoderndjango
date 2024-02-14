@@ -1,15 +1,17 @@
 {% extends 'base/base.html' %}
+{% block title %}Inline validation with htmx and Django{% endblock %}
 {% block content %}
 <h1>Inline Validation</h1>
-<p>Sometimes the user benefits from immediate form validation feedback.
-    Especially in longer forms, it can be annoying to fill them out only to
+<chip>htmx</chip>
+<p>Sometimes the user benefits from immediate feedback when filling a form.
+    Especially in larger forms, it can be annoying to fill them out only to
     learn that some value to entered at the top won't work. Client-side
     validation can handle a lot of these cases but some validation can
     only be performed server-side.
 </p>
 <p class="box warn">
     <strong class="block titlebar">Do you need inline validation?</strong>
-    In many cases, inline server-side validation is unnecessary. The
+    In most cases, inline server-side validation is unnecessary. The
     <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">
         client-side form validation API
     </a> is powerful and can handle almost all cases that don't rely on data from
@@ -19,8 +21,103 @@
     asynchronously.
 </p>
 <p>A registration form with a field for a username may benefit from inline validation,
-    especially if the site is hugely popular. Enter any username in the following form -
-    it will only accept "fred".
+    especially if the site is hugely popular. On this site every username is taken
+    except <strong>"Fred"</strong>.
 </p>
 {% include 'patterns/inline_validation/form.html' with form=form %}
+<p>Much like the <a href="{% url 'patterns:simple-form-index' %}">simple forms</a>
+    example, Django's
+    <a href="https://docs.djangoproject.com/en/5.0/topics/forms/">form api</a> is
+    leveraged to define a form abstraction:
+
+    <prism-remote
+    src="https://github.com/Fingel/unmoderndjango/blob/main/patterns/views/inline_validation.py"
+    lang="python"
+    start=6
+    end=22>
+</prism-remote>
+<p>
+    Notice that the validation function <code>valid_username</code> is defined outside
+    of the form's <code>clean_username</code> function. This is so it can be re-used.
+</p>
+<p>
+    The template to render this form still uses most of Django's form API to render
+    itself. Extra logic is required for the <code>username</code> field so
+    the abstraction is lifted a bit.
+</p>
+<prism-remote
+    src="https://github.com/Fingel/unmoderndjango/blob/main/patterns/templates/patterns/inline_validation/form.html"
+    lang="markup">
+</prism-remote>
+<p>
+    The <code>hx-post</code> and <code>hx-swap</code> attributes on the main form
+    element instruct htmx to replace the contents of this form with the response from
+    the <code>patterns:inline-validation-form</code> url when it is submitted.
+</p>
+<p>
+    The markup for the <code>username</code> field is mostly deconstructed, with the
+    input field being entirely written out. This is the logic that handles the inline
+    validation. Here is what each attribute is doing:
+    <ul>
+        <li>
+            <code>hx-post</code>: sets the target of the triggered POST request to
+            <code>patterns:inline-validation-username</code> (our validation
+            endpoint).
+        </li>
+        <li>
+            <code>hx-params</code>: instructs htmx to not send the value of the
+            <code>password</code> field. Our validation endpoint doesn't need to
+            know that.
+        </li>
+        <li>
+            <code>hx-swap</code>: The swapping strategy. In this case, replace the
+            contents of the <code>hx-target</code> with the response from the
+            validation endpoint.
+        </li>
+        <li>
+            <code>hx-target</code>: The target for the swap. In this case, the
+            previous <code>.errorlist ul</code>.
+        </li>
+    </ul>
+    The rest of the attributes are standard for html inputs.
+ </p>
+ <p>
+    The <code>patterns:inline-validation-username</code> view does the actual validation
+    on the <code>username</code> field. Because the validation message is so simple
+    this view returns a <code>HttpResponse</code> directly instead of rendering a
+    template, although it could if the message needed to be more complex.
+</p>
+<prism-remote
+    src="https://github.com/Fingel/unmoderndjango/blob/main/patterns/views/inline_validation.py"
+    lang="python"
+    start=40
+    end=46>
+</prism-remote>
+<p>
+    The <code>patterns:inline-validation-form</code> view is the target for the full
+    submit of the form. It does full validation and returns a fresh form if it passes,
+    thus refreshing it. If the validation fails, the dirty form is returned.
+    Any inline validation errors are simply replaced by the swap, removing them from view.
+</p>
+<prism-remote
+    src="https://github.com/Fingel/unmoderndjango/blob/main/patterns/views/inline_validation.py"
+    lang="python"
+    start=25
+    end=37>
+</prism-remote>
+<p>
+    There are three types of validation on this form:
+    <ol>
+        <li>Client side validation. Your browser will prevent the form from
+            being submitted if any of the fields are blank.
+        </li>
+        <li>Inline validation hooked up to the username field.</li>
+        <li>Final full-form validation from the main endpoint.</li>
+    </ol>
+    Knowing how and when to take advantage of each kind of validation is the key
+    to usable and well-behaved forms.
+</p>
+<p>
+    <a href="{% url 'patterns:index' %}">More patterns</a>
+</p>
 {% endblock %}
