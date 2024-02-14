@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <h2>What is Unmodern Django?</h2>
-<p>Unmodern is a rescue attempt to free Django from purgatory of JSON APIs.
+<p>Unmodern is an attempt to free Django from purgatory of JSON APIs.
     It is inspired by the philosophy of the
     <a href="https://unmodernweb.com/philosophy">Unmodern Web</a>. The idea
     is not to go back to the old ways, but to take full advantage of the
@@ -16,8 +16,10 @@
 <h2>But DRF and Ninja Framework are great!</h2>
 <p>They are great! But they are not the <em>only</em> ways to build an application
     with Django. At the same time, nobody wants to return to the days of full page
-    reloads and janky form interactions. Check out some of the <a href="">Libraries</a>
-    and <a href="">patterns</a> that make it possible!
+    reloads and janky form interactions. Check out some of the
+    <a href="{% url 'base:libraries' %}">libraries</a>
+    and <a href="{% url 'patterns:index' %}">patterns</a> that make building
+    modern web applications in Django possible.
 </p>
 
 <h2>A note on code blocks.</h2>

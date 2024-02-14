@@ -1,6 +1,6 @@
-:root {
-  --link-fg: var(--green-4);
+* {
   --line-length: 50em;
+  --accent: var(--green-6);
 }
 .green {
   color: var(--green-9);
@@ -12,11 +12,22 @@
   font-size: 1.5em;
   font-weight: bold;
 }
-
-#buttonwrapper {
-  margin-left: 0;
+.page-list h3 {
+  margin-bottom: calc(0.5 * var(--gap));
 }
 
+nav > ul {
+  margin-right: auto;
+}
+
+/*nav a {
+  color: var(--green-4);
+}*/
+
+chip > a {
+  text-decoration: inherit;
+  color: inherit;
+}
 /*forms*/
 
 input[aria-invalid="true"] {

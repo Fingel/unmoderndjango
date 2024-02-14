@@ -1,6 +1,13 @@
 from django.urls import path
+from django.views.generic import TemplateView
 
-from base.views import IndexView
 
 app_name = "base"
-urlpatterns = [path("", IndexView.as_view(), name="index")]
+urlpatterns = [
+    path("", TemplateView.as_view(template_name="base/index.html"), name="index"),
+    path(
+        "libraries",
+        TemplateView.as_view(template_name="base/libraries.html"),
+        name="libraries",
+    ),
+]

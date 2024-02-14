@@ -1,18 +1,20 @@
 {% extends 'base/base.html' %}
 {% block content %}
-<h2>Forms</h2>
+<h1>Forms</h1>
+<div class="page-list">
 <h3>
     <a href="{% url 'patterns:simple-form-index' %}">Simple Forms</a>
 </h3>
-<chip>htmx</chip>
+<chip><a href="{% url 'base:libraries' %}#htmx">htmx</a></chip>
 <p>Use htmx in combination with Django's abstractions to build forms
     that are interactive without any page reloads.
 </p>
 <h3>
     <a href="{% url 'patterns:inline-validation-index' %}">Inline Validation</a>
 </h3>
-<chip>htmx</chip>
+<chip><a href="{% url 'base:libraries' %}#htmx">htmx</a></chip>
 <p>Use htmx to validate forms with server side validation, without waiting
     for the form to be submitted.
 </p>
+</div>
 {% endblock %}

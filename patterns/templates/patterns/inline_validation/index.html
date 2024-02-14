@@ -2,14 +2,14 @@
 {% block title %}Inline validation with htmx and Django{% endblock %}
 {% block content %}
 <h1>Inline Validation</h1>
-<chip>htmx</chip>
+<chip><a href="{% url 'base:libraries' %}#htmx">htmx</a></chip>
 <p>Sometimes the user benefits from immediate feedback when filling a form.
     Especially in larger forms, it can be annoying to fill them out only to
     learn that some value to entered at the top won't work. Client-side
-    validation can handle a lot of these cases but some validation can
+    validation can handle most of these cases but sometimes validation can
     only be performed server-side.
 </p>
-<p class="box warn">
+<p class="box">
     <strong class="block titlebar">Do you need inline validation?</strong>
     In most cases, inline server-side validation is unnecessary. The
     <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">
@@ -116,6 +116,10 @@
     </ol>
     Knowing how and when to take advantage of each kind of validation is the key
     to usable and well-behaved forms.
+</p>
+<p>
+    Don't need inline validation? Check out
+    <a href="{% url 'patterns:simple-form-index' %}">simple forms</a>.
 </p>
 <p>
     <a href="{% url 'patterns:index' %}">More patterns</a>

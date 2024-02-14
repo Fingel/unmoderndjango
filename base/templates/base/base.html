@@ -25,13 +25,8 @@
       <ul role="list">
         <li class="logo"><a href="/">&lt;Unmodern<span class="green">Django</span>/&gt;</a>
         <li><a href="{% url 'patterns:index' %}">Patterns</a>
-        <li><a href="/docs">Libraries</a>
-        <li><a href="/docs">Blog</a>
-      </ul>
-    </nav>
-    <nav aria-label="Social media links">
-      <ul role="list">
-        <li><a href="https://github.com/...">GitHub</a>
+        <li><a href="{% url 'base:libraries' %}">Libraries</a>
+        <li><a href="https://github.com/Fingel/unmoderndjango/">GitHub</a>
       </ul>
     </nav>
   </header>
