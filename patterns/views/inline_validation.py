@@ -5,9 +5,8 @@ from django.shortcuts import render
 
 def valid_username(username: str) -> bool:
     """
-    Validation logic would go here most likely a database
-    lookup. This example just compares the string to
-    "fred".
+    Validation logic would go here - most likely a database lookup.
+    This example just compares the string to "fred".
     """
     return username.lower() == "fred"
 
