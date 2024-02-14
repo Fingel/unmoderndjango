@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h1>Inline Validation</h1>
+<p>Sometimes the user benefits from immediate form validation feedback.
+    Especially in longer forms, it can be annoying to fill them out only to
+    learn that some value to entered at the top won't work. Client-side
+    validation can handle a lot of these cases but some validation can
+    only be performed server-side.
+</p>
+<p class="box warn">
+    <strong class="block titlebar">Do you need inline validation?</strong>
+    In many cases, inline server-side validation is unnecessary. The
+    <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">
+        client-side form validation API
+    </a> is powerful and can handle almost all cases that don't rely on data from
+    the server. And even if you do need server-side validation, sometimes a full
+    form submit isn't a huge deal - especially with
+    <a href="{% url 'patterns:simple-form-index' %}">simple forms</a> that are submitted
+    asynchronously.
+</p>
+<p>A registration form with a field for a username may benefit from inline validation,
+    especially if the site is hugely popular. Enter any username in the following form -
+    it will only accept "fred".
+</p>
+{% include 'patterns/inline_validation/form.html' with form=form %}
+{% endblock %}

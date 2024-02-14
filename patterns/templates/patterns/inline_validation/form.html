@@ -1,0 +1,29 @@
+<form
+    hx-post="{% url 'patterns:inline-validation-form' %}"
+    hx-swap="outerHTML"
+>
+    {% csrf_token %}
+    <div>
+        {{ form.username.label_tag }}
+        <ul class="errorlist">
+            {% for error in form.username.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        <input
+            hx-post="{% url 'patterns:inline-validation-username' %}"
+            hx-params="not password"
+            hx-swap="innerHTML"
+            hx-target="previous .errorlist"
+            id="id_username" type="text" name="username"
+            maxlength="200" required
+        >
+    </div>
+    <div>
+        {{ form.password.as_field_group }}
+    </div>
+    <p>
+        <input type="submit" value="Register">
+    </p>
+    <p>{{ message }}</p>
+</form>
