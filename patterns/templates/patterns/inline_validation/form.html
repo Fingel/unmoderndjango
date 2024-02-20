@@ -15,6 +15,7 @@
             hx-params="not password"
             hx-swap="innerHTML"
             hx-target="previous .errorlist"
+            {% if form.username.errors %}aria-invalid="true"{% endif %}
             id="id_username" type="text" name="username"
             maxlength="200" required
         >

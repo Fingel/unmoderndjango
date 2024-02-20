@@ -20,10 +20,6 @@ nav > ul {
   margin-right: auto;
 }
 
-/*nav a {
-  color: var(--green-4);
-}*/
-
 chip > a {
   text-decoration: inherit;
   color: inherit;
@@ -38,4 +34,12 @@ input[aria-invalid="true"] {
   margin: 0;
   list-style: none;
   color: var(--red-5);
+  font-size: 0.6em;
+  text-transform: uppercase;
+  padding-left: 0 !important;
+  line-height: 1.3em;
+}
+
+input[type="submit"] {
+  margin-top: 1em;
 }
