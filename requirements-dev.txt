@@ -16,11 +16,13 @@ django==5.0.2
     # via unmoderndjango (pyproject.toml)
 packaging==23.2
     # via build
-pip-tools==7.3.0
+pip-tools==7.4.0
     # via unmoderndjango (pyproject.toml)
 pyproject-hooks==1.0.0
-    # via build
-ruff==0.2.1
+    # via
+    #   build
+    #   pip-tools
+ruff==0.2.2
     # via unmoderndjango (pyproject.toml)
 sqlparse==0.4.4
     # via django
